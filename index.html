@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HackOnVibe — how we build & host your project</title>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HackOnVibe — how we host your project</title>
 <style>
 body{margin:0;min-height:100vh;background:#10051f;color:#fff8ff;font-family:Inter,system-ui,sans-serif;padding:2.5rem 1.25rem;line-height:1.65}
 main{max-width:52rem;margin:0 auto}
@@ -26,42 +26,30 @@ ul.builds li{border:1px solid rgba(255,255,255,.14);background:rgba(19,9,34,.6);
 </head>
 <body><main>
 <h1>Welcome — this is your team's project repo</h1>
-<p class="sub">Push your work to <code>main</code> and HackOnVibe builds &amp; hosts it automatically at your team subdomain. Here's exactly how we pick your build.</p>
+<p class="sub">Your code lives here. Push to <code>main</code> and HackOnVibe builds &amp; hosts your <b>static</b> site automatically at your team subdomain — in about 2&ndash;5 minutes.</p>
 
-<h2>How we detect &amp; deploy your project</h2>
-<p>The pipeline reads your repo and chooses one of four builds — you don't configure anything, just push what you built:</p>
+<h2>How hosting works</h2>
 <ul class="builds">
   <li>
-    <div class="bt"><span class="em">🟢</span>Plain website</div>
-    <p class="trig"><b>Trigger:</b> no build step (no <code>package.json</code>, or no <code>build</code> script). We serve your files as-is — your <code>index.html</code> shows up <a href="/">on your page</a>.</p>
+    <div class="bt"><span class="em">🟢</span>Static site &mdash; we host it for you</div>
+    <p class="trig">A plain website (just <code>index.html</code> and files) <b>or</b> a static build (React/Vite/Astro, or Next.js with <code>output: 'export'</code>). Push to <code>main</code> &rarr; we run your build (if any) and publish it <a href="/">on your subdomain</a>. Nothing to configure.</p>
   </li>
   <li>
-    <div class="bt"><span class="em">🟡</span>Built (static) app</div>
-    <p class="trig"><b>Trigger:</b> a static framework — React/Vite/Astro, or Next.js with <code>output: 'export'</code>. We run <code>npm run build</code> and publish the output (<code>dist</code>/<code>build</code>/<code>out</code>/…) <a href="/">on your page</a>.</p>
-  </li>
-  <li>
-    <div class="bt"><span class="em">🔵</span>Server app (SSR)</div>
-    <p class="trig"><b>Trigger:</b> Next.js in SSR mode (has <code>next</code>, <b>no</b> <code>output: 'export'</code>) — it needs a live Node runtime. We build and run it in an isolated <b>Docker container</b> behind a tunnel. Add your API keys at <a href="https://hackonvibe.com/me">HackOnVibe.com/me</a>.</p>
-  </li>
-  <li>
-    <div class="bt"><span class="em">🟠</span>Node backend</div>
-    <p class="trig"><b>Trigger:</b> a non-Next Node server — a server dependency (<code>express</code>/<code>fastify</code>/…) or a <code>server</code>/<code>start</code> script that runs <code>node</code>. We host it in a <b>Docker container</b> same-origin: your frontend + your API on one domain (<code>/api</code> is proxied to your server). Add your API keys at <a href="https://hackonvibe.com/me">HackOnVibe.com/me</a>.</p>
+    <div class="bt"><span class="em">🔵</span>Needs a live server? &mdash; deploy it yourself, keep the code here</div>
+    <p class="trig">If your project needs a running server (Next.js in SSR mode, a Node/Express backend, anything with an API at runtime), <b>we host static sites only</b> &mdash; deploy the server yourself on <b>Vercel</b> (or Render, Railway, Fly &mdash; wherever you like). Two things stay with us: <b>keep your code in THIS GitHub repo</b> (that's where the judges read it), and <b>paste your live URL</b> in your cabinet so judges open the right site.</p>
   </li>
 </ul>
 
 <div class="note info">
-  <p class="nt">🧩 Got a different build?</p>
-  <ol style="margin:0;padding-left:1.3rem">
-    <li>Upload it to your GitHub.</li>
-    <li>Tell the organizers: <a href="https://discord.gg/tU6NqSaS8">discord.gg/tU6NqSaS8</a></li>
-  </ol>
+  <p class="nt">🔗 Where to add your live link</p>
+  <p style="margin:0">Deployed your server-side app elsewhere? Open <a href="https://hackonvibe.com/me">HackOnVibe.com/me</a>, go to your team section, and paste the link to your deployment there. That link is the site judges will review &mdash; keep it up to date.</p>
 </div>
 
 <div class="note warn">
-  <p class="nt">⚠️ Don't delete these — the build needs them</p>
-  <p style="margin:0">Keep <code>.github/workflows/deploy.yml</code> (your deploy pipeline — it's what puts your site live) and, if your app has one, <code>package.json</code>. Removing them breaks auto-deploy, and your subdomain won't update.</p>
+  <p class="nt">⚠️ Don't delete these &mdash; your static deploy needs them</p>
+  <p style="margin:0">Keep <code>.github/workflows/deploy.yml</code> (it's what puts your static site live) and, if your app has one, <code>package.json</code>. Removing them breaks the auto-deploy of your subdomain.</p>
 </div>
 
-<p class="foot">⏱️ After you push to <code>main</code>, your site goes live in about <b>2–5 minutes</b>. Still not live after 5? Something went wrong — tell the organizers on Discord so we can help.</p>
+<p class="foot">⏱️ After you push to <code>main</code>, your static site goes live in about <b>2&ndash;5 minutes</b>. Still not live after 5 &mdash; or hosting a server elsewhere and stuck? Tell the organizers on <a href="https://discord.gg/tU6NqSaS8">Discord</a>.</p>
 </main></body>
 </html>
